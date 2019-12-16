@@ -1,0 +1,75 @@
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import T from 'prop-types';
+import apiRequest from '../services/apiRequest';
+import routes from '../routes';
+
+import Cast from '../components/Cast/Cast';
+import styles from './styles.module.css';
+
+
+export default class MovieDetailsPage extends Component {
+  static propTypes = {
+    match: T.shape().isRequired,
+    location: T.shape().isRequired,
+    history: T.shape().isRequired,
+  };
+
+  state = { movie: null };
+
+  componentDidMount() {
+    this.fetchDetails();
+  }
+
+  fetchDetails = () => {
+    const { movieId } = this.props.match.params;
+
+    apiRequest.fetchMovieDetails(movieId).then(movie => {
+        this.setState({ movie });
+      });
+    };
+
+  render() {
+    const { movie } = this.state;
+    const { match, location } = this.props;
+
+    return (
+      <div>
+        <h1>Movie Details</h1>
+
+        {movie && (
+          <>
+            <img
+              src={apiRequest.moviePoster + movie.poster_path}
+              alt={movie.title}
+            />
+            <h2>{movie.original_title || movie.original_name}</h2>
+            <p>User score: {movie.popularity}%</p>
+            <h3>Overview:</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres:</h3>
+          </>
+        )}
+        
+        <p>Additional information</p>
+
+        <ul>
+          <li>
+            <Link
+              to={{
+                pathname: `${match.url}/${routes.CAST}`,
+                state: { from: location },
+              }}
+            >
+              Cast
+            </Link>
+          </li>
+        </ul>
+
+        <hr />
+
+        <Route path={`${match.path}/${routes.CAST}`} component={Cast} />
+      </div>
+    );
+  }
+}
