@@ -35,7 +35,6 @@ export default class MoviesPage extends Component {
     }
 
   componentDidUpdate(prevProps) {
-    const { location } = this.props;
     const prevQuery = getQueryParams(prevProps);
     const nextQuery = getQueryParams(this.props);
 
@@ -43,7 +42,7 @@ export default class MoviesPage extends Component {
       return;
     }
 
-    apiRequest.fetchMoviesSearch(nextQuery).then(movies => {
+    apiRequest.fetchMovieSearch(nextQuery).then(movies => {
       this.setState({ movies });
     });
     

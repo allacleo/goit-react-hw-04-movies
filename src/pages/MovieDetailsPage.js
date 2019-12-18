@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import T from 'prop-types';
 import apiRequest from '../services/apiRequest';
+import Reviews from '../components/Reviews/Reviews';
 import routes from '../routes';
 
 import Cast from '../components/Cast/Cast';
-import styles from './styles.module.css';
+// import styles from './styles.module.css';
 
 
 export default class MovieDetailsPage extends Component {
@@ -64,11 +65,22 @@ export default class MovieDetailsPage extends Component {
               Cast
             </Link>
           </li>
+          <li>
+            <Link
+              to={{
+                pathname: `${match.url}/${routes.REVIEWS}`,
+                state: { from: location },
+              }}
+            >
+              Reviews
+            </Link>
+          </li>
         </ul>
 
         <hr />
 
         <Route path={`${match.path}/${routes.CAST}`} component={Cast} />
+        <Route path={`${match.path}/${routes.REVIEWS}`} component={Reviews} />
       </div>
     );
   }
