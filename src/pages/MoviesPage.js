@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import T from 'prop-types';
 
-import routes from '../routes';
 import queryString from 'query-string';
 import SearchBar from '../components/SearchBar/SearchBar';
 import apiRequest from '../services/apiRequest';
@@ -57,7 +56,7 @@ export default class MoviesPage extends Component {
 
   render() {
     const { movies } = this.state;
-    const {location} = this.props;
+    const {match, location} = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -70,7 +69,7 @@ export default class MoviesPage extends Component {
             <li key={movie.id}>
               <Link
                 to={{
-                  pathname: `${routes.MOVIES}/${movie.id}`,
+                  pathname: `${match.url}/${movie.id}`,
                   state: {from: location},
                 }}
               >

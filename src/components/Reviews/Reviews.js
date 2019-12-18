@@ -24,6 +24,8 @@ export default class Reviews extends Component {
     });  
   };
     
+
+
   render() {
     const { reviews } = this.state;
 
