@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 import Navigation from './Navigation/Navigation';
 import HomePage from '../pages/HomePage';
-import MoviesPage from '../pages/MoviesPage';
+import MoviePage from '../pages/MoviePage';
 import MovieDetailsPage from '../pages/MovieDetailsPage';
 
 import routes from '../routes';
@@ -16,7 +16,7 @@ const App = () => (
         <Switch>
             <Route exact path={routes.HOME} component={HomePage} />
             <Route path={routes.MOVIES_DETAILS} component={MovieDetailsPage} />
-            <Route path={routes.MOVIES} component={MoviesPage} />
+            <Route path={routes.MOVIES} component={MoviePage} />
             <Redirect to={routes.HOME} />
         </Switch>
     </div>

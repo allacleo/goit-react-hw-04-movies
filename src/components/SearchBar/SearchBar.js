@@ -13,7 +13,7 @@ export default class SearchBar extends Component {
     };
 
     onSubmit = e => {
-        e.prevetnDefault();
+        e.preventDefault();
 
         this.props.onSearch(this.state.value);
         this.setState({value: ''});

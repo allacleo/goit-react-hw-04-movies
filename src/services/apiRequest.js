@@ -8,7 +8,7 @@ const fetchMoviesTrending = () => {
 
 const fetchMovieSearch = searchQuery => {
     return fetch(
-        `https://api.themoviedb.org/3/search/company?api_key=08ce4741fc784e2e0a74eb2fa686235b&page=1tps://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=08ce4741fc784e2e0a74eb2fa686235b&language=en-US&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=08ce4741fc784e2e0a74eb2fa686235b&language=en-US&page=1&include_adult=false`
     ).then(res => res.json())
     .then(data => data.results);
 };
