@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.22ddfb63.chunk.css",
-    "main.js": "/static/js/main.cdd10149.chunk.js",
-    "main.js.map": "/static/js/main.cdd10149.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.80cdc8d9.js",
-    "runtime-main.js.map": "/static/js/runtime-main.80cdc8d9.js.map",
-    "static/js/2.ca4ade5b.chunk.js": "/static/js/2.ca4ade5b.chunk.js",
-    "static/js/2.ca4ade5b.chunk.js.map": "/static/js/2.ca4ade5b.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.930b61056d757e45d5d04dbb378fc71b.js": "/precache-manifest.930b61056d757e45d5d04dbb378fc71b.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.22ddfb63.chunk.css.map": "/static/css/main.22ddfb63.chunk.css.map",
-    "static/js/2.ca4ade5b.chunk.js.LICENSE": "/static/js/2.ca4ade5b.chunk.js.LICENSE"
+    "main.css": "/goit-react-hw-04-movies/static/css/main.22ddfb63.chunk.css",
+    "main.js": "/goit-react-hw-04-movies/static/js/main.cdd10149.chunk.js",
+    "main.js.map": "/goit-react-hw-04-movies/static/js/main.cdd10149.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-04-movies/static/js/runtime-main.96c171c8.js",
+    "runtime-main.js.map": "/goit-react-hw-04-movies/static/js/runtime-main.96c171c8.js.map",
+    "static/js/2.ca4ade5b.chunk.js": "/goit-react-hw-04-movies/static/js/2.ca4ade5b.chunk.js",
+    "static/js/2.ca4ade5b.chunk.js.map": "/goit-react-hw-04-movies/static/js/2.ca4ade5b.chunk.js.map",
+    "index.html": "/goit-react-hw-04-movies/index.html",
+    "precache-manifest.61ee320c4e322a2c9acfbf7c65b95685.js": "/goit-react-hw-04-movies/precache-manifest.61ee320c4e322a2c9acfbf7c65b95685.js",
+    "service-worker.js": "/goit-react-hw-04-movies/service-worker.js",
+    "static/css/main.22ddfb63.chunk.css.map": "/goit-react-hw-04-movies/static/css/main.22ddfb63.chunk.css.map",
+    "static/js/2.ca4ade5b.chunk.js.LICENSE": "/goit-react-hw-04-movies/static/js/2.ca4ade5b.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.80cdc8d9.js",
+    "static/js/runtime-main.96c171c8.js",
     "static/js/2.ca4ade5b.chunk.js",
     "static/css/main.22ddfb63.chunk.css",
     "static/js/main.cdd10149.chunk.js"
