@@ -8,7 +8,6 @@ import routes from '../routes';
 import Cast from '../components/Cast/Cast';
 // import styles from './styles.module.css';
 
-
 export default class MovieDetailsPage extends Component {
   static propTypes = {
     match: T.shape().isRequired,
@@ -26,9 +25,9 @@ export default class MovieDetailsPage extends Component {
     const { movieId } = this.props.match.params;
 
     apiRequest.fetchMovieDetails(movieId).then(movie => {
-        this.setState({ movie });
-      });
-    };
+      this.setState({ movie });
+    });
+  };
 
   render() {
     const { movie } = this.state;
@@ -49,9 +48,10 @@ export default class MovieDetailsPage extends Component {
             <h3>Overview:</h3>
             <p>{movie.overview}</p>
             <h3>Genres:</h3>
+            <p>{movie.genres.map(genre => genre.name)}</p>
           </>
         )}
-        
+
         <p>Additional information</p>
 
         <ul>
