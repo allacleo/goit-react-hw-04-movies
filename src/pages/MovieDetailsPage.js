@@ -12,7 +12,7 @@ export default class MovieDetailsPage extends Component {
   static propTypes = {
     match: T.shape().isRequired,
     location: T.shape().isRequired,
-    history: T.shape().isRequired,
+    history: T.shape.isRequired,
   };
 
   state = { movie: null };
@@ -29,12 +29,26 @@ export default class MovieDetailsPage extends Component {
     });
   };
 
+  onGoBack = () => {
+    if (this.props.location.state && this.props.location.state.from) {
+      this.props.history.push(this.props.location.state.from);
+      return;
+    }
+
+    this.props.history.push(`${routes.HOME}||${routes.MOVIES}`);
+  };
+
+
   render() {
     const { movie } = this.state;
     const { match, location } = this.props;
 
     return (
       <div>
+        <button type="button" onClick={this.onGoBack}>
+          Go back
+        </button>
+
         <h1>Movie Details</h1>
 
         {movie && (
