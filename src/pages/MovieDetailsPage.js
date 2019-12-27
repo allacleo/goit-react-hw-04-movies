@@ -6,13 +6,13 @@ import Reviews from '../components/Reviews/Reviews';
 import routes from '../routes';
 
 import Cast from '../components/Cast/Cast';
-// import styles from './styles.module.css';
+
 
 export default class MovieDetailsPage extends Component {
   static propTypes = {
     match: T.shape().isRequired,
     location: T.shape().isRequired,
-    history: T.shape.isRequired,
+    history: T.shape().isRequired,
   };
 
   state = { movie: null };
@@ -35,7 +35,7 @@ export default class MovieDetailsPage extends Component {
       return;
     }
 
-    this.props.history.push(`${routes.HOME}||${routes.MOVIES}`);
+    this.props.history.push(`${routes.HOME}`);
   };
 
 
@@ -73,7 +73,7 @@ export default class MovieDetailsPage extends Component {
             <Link
               to={{
                 pathname: `${match.url}/${routes.CAST}`,
-                state: { from: location },
+                // state: { from: location },
               }}
             >
               Cast
@@ -83,7 +83,7 @@ export default class MovieDetailsPage extends Component {
             <Link
               to={{
                 pathname: `${match.url}/${routes.REVIEWS}`,
-                state: { from: location },
+                // state: { from: location },
               }}
             >
               Reviews
