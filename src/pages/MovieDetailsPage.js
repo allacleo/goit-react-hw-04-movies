@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import T from 'prop-types';
 import apiRequest from '../services/apiRequest';
 import Reviews from '../components/Reviews/Reviews';
@@ -12,7 +12,9 @@ export default class MovieDetailsPage extends Component {
   static propTypes = {
     match: T.shape().isRequired,
     location: T.shape().isRequired,
-    history: T.shape().isRequired,
+    history: T.shape({
+      goBack: T.func.isRequired,
+    }).isRequired,
   };
 
   state = { movie: null };
@@ -30,18 +32,17 @@ export default class MovieDetailsPage extends Component {
   };
 
   onGoBack = () => {
-    if (this.props.location.state && this.props.location.state.from) {
-      this.props.history.push(this.props.location.state.from);
-      return;
-    }
-
-    this.props.history.push(`${routes.HOME}`);
+    const { location, history } = this.props;
+    if (location.state) {
+      history.push(location.state.from);
+    } else history.push("/");
   };
 
-
+    
   render() {
     const { movie } = this.state;
-    const { match, location } = this.props;
+    const { match } = this.props;
+    const { state } = this.props.location;
 
     return (
       <div>
@@ -73,7 +74,7 @@ export default class MovieDetailsPage extends Component {
             <Link
               to={{
                 pathname: `${match.url}/${routes.CAST}`,
-                // state: { from: location },
+                state
               }}
             >
               Cast
@@ -83,7 +84,7 @@ export default class MovieDetailsPage extends Component {
             <Link
               to={{
                 pathname: `${match.url}/${routes.REVIEWS}`,
-                // state: { from: location },
+                state
               }}
             >
               Reviews
@@ -92,9 +93,10 @@ export default class MovieDetailsPage extends Component {
         </ul>
 
         <hr />
-
+        <Switch>
         <Route path={`${match.path}/${routes.CAST}`} component={Cast} />
         <Route path={`${match.path}/${routes.REVIEWS}`} component={Reviews} />
+        </Switch>
       </div>
     );
   }

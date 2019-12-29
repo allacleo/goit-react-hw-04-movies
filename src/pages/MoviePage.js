@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
 import T from 'prop-types';
 
 import SearchBar from '../components/SearchBar/SearchBar';
 import apiRequest from '../services/apiRequest';
 import styles from '../pages/styles.module.css';
 
+const getQueryPramsFromProps = props =>
+  queryString.parse(props.location.search);
 
 export default class MoviePage extends Component {
   static propTypes = {
@@ -19,28 +22,36 @@ export default class MoviePage extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    const query = new URLSearchParams(location.search).get('query');
-    if (!query) {
+    const queryParams = getQueryPramsFromProps(this.props);
+
+    if (!queryParams.query) {
       return;
     }
-    apiRequest.fetchMovieSearch(query).then(movies => {
+
+    apiRequest.fetchMovieSearch(queryParams.query).then(movies => {
       this.setState({ movies });
     });
     }
 
   componentDidUpdate(prevProps) {
-    const { location } = this.props;
-    const prevQuery = new URLSearchParams(prevProps.location.search).get(
-      'query',
-    );
-    const nextQuery = new URLSearchParams(location.search).get('query');
+    // const { location } = this.props;
+    // const prevQuery = new URLSearchParams(prevProps.location.search).get(
+    //   'query',
+    // );
+    // const nextQuery = new URLSearchParams(location.search).get('query');
 
-    if (prevQuery === nextQuery) {
+    // if (prevQuery === nextQuery) {
+    //   return;
+    // }
+
+    const queryParams = getQueryPramsFromProps(this.props);
+
+    if (!queryParams.query) {
       return;
     }
 
-    apiRequest.fetchMovieSearch(nextQuery).then(movies => {
+
+    apiRequest.fetchMovieSearch(queryParams.query).then(movies => {
       this.setState({ movies });
     });
 
